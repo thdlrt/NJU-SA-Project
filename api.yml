@@ -1,0 +1,99 @@
+openapi: 3.0.0
+info:
+  title: E-commerce API
+  version: 1.0.0
+paths:
+  /Product:
+    get:
+      summary: 获取所有产品列表
+      responses:
+        '200':
+          description: 成功
+  /Product/{productId}:
+    get:
+      summary: 根据ID获取产品
+      parameters:
+        - name: productId
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: 成功
+        '404':
+          description: 产品未找到
+  /Product/search/{name}:
+    get:
+      summary: 根据名称搜索产品
+      parameters:
+        - name: name
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: 成功
+        '404':
+          description: 产品未找到
+  /Order/add/{productId}:
+    post:
+      summary: 添加产品到订单
+      parameters:
+        - name: productId
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: 成功
+        '404':
+          description: 产品未找到
+  /Order/delete/{productId}:
+    delete:
+      summary: 从订单中删除产品
+      parameters:
+        - name: productId
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: 成功
+        '404':
+          description: 产品未找到
+  /Order/checkout:
+    post:
+      summary: 结算订单
+      responses:
+        '200':
+          description: 成功
+  /Order/order/{orderId}:
+    get:
+      summary: 根据ID获取订单
+      parameters:
+        - name: orderId
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: 成功
+        '404':
+          description: 订单未找到
+  /Order/cart:
+    get:
+      summary: 获取当前购物车
+      responses:
+        '200':
+          description: 成功
+  /Delivery:
+    get:
+      summary: 获取所有订单
+      responses:
+        '200':
+          description: 成功
